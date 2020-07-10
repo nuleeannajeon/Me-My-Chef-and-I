@@ -1,0 +1,107 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fridge Ingredients</title>
+    <!-- font awesome link -->
+    <script src="https://kit.fontawesome.com/6982aca92a.js" crossorigin="anonymous"></script>
+    <!-- boostrap link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Boostrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!-- Font CSS LINK -->
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <!-- local css link -->
+    <link href="assets/style.css" rel="stylesheet">
+    <!-- any NPM packages you want to include, you can directly include like this -->
+    <script src="https://unpkg.com/moment"></script>
+</head>
+<!-- onload="displayFridgeList(), itemList(category='vegetable')" -->
+<body onload="displayFridgeList(), itemList(category='vegetable')">
+  <!-- Navbar -->
+  <nav class="navbar flex-column">
+    <a class="navbar-brand text-center" href="index.html" style="font-size: 50px; padding-top: 30px; padding-bottom: 30px;">Me MyChef & I</a>
+      <ul class="nav justify-content-center menu-list" style="border-top: 1px black solid; border-bottom: 1px black solid">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="fridge.html">Ingredients</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="recipe.html">Recipe</a>
+        </li>
+      </ul>
+  </nav>
+
+  <div class="container mt-4">
+  <div class="row text-center">
+    <div class="col-12 col-md-6 text-center">
+      <div class="row">
+
+        <div class="col-12 ingredient-input">
+              <form class="">
+                <div class="form-group">
+                  <label class="input-title" for="foodInfo">Insert New Ingredient</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <select class="form-control" id="category">
+                        <option value="vegetable">Vegetable</option>
+                        <option value="fruit">Fruits</option>
+                        <option value="dairy">Dairy</option>
+                        <option value="meat">Meat</option>
+                        <option value="seafood">Seafood</option>
+                        <option value="others">Others</option>
+                      </select>                                        
+                    </div>
+                    <input class="form-control" id="itemName">
+                  </div>                              
+                </div>
+                <div class="form-row">
+                  <div class="col-4">
+                    <input type="number" class="form-control" id="quantity" placeholder="Quantity">
+                  </div>
+                  <div class="col-8">
+                    <input type="text" class="form-control" id="image_url" placeholder="Insert Image URL Here!">
+                  </div>
+                </div>
+                <button class="btn submitIngreBtn" type="submit" onclick="addItem(event)">Submit</button>
+              </form>
+        </div>
+
+        <div class="col-12 btn-row mt-3 mb-3">
+          <button type="button" class="btn category vegi-btn" onclick="itemList(category='vegetable')"><i class="fas fa-carrot"></i></button>
+          <button type="button" class="btn category fruit-btn" onclick="itemList(category='fruit')"><i class="fas fa-apple-alt"></i> </button>
+          <button type="button" class="btn category dairy-btn" onclick="itemList(category='dairy')"><i class="fas fa-cheese"></i></button>
+          <button type="button" class="btn category meat-btn" onclick="itemList(category='meat')"><i class="fas fa-drumstick-bite"></i></button>
+          <button type="button" class="btn category seafood-btn" onclick="itemList(category='seafood')"><i class="fas fa-fish"></i></button>
+          <button type="button" class="btn category others-btn" onclick="itemList(category='others')"><i class="fas fa-shopping-basket"></i></button>
+        </div>
+      </div>
+
+        <div class="row overflow-auto item-by-category" id="renderItem">
+        </div>
+    </div>
+
+    <div class="col-12 col-md-6 text-center">
+      <!-- title -->
+      <h2 class="yourFridge"><span id="fridge-title">Your Fridge</span></h2>
+      <!-- Fridge List -->
+        <div class="row" id='renderFridge'>
+
+        </div>
+
+    </div>
+  </div>
+</div>
+  <footer class="footer">
+    <p style="margin-bottom:0;">© 2020 HAAC-ers</p>
+  </footer>
+  
+  <script src="./assets/script.js"></script>
+</body>
+</html>
